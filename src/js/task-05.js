@@ -1,6 +1,13 @@
-const nameInput = document.getElementById("name-input");
-const nameOutput = document.getElementById("name-output");
-
-nameInput.addEventListener("input", function () {
-    nameOutput.textContent = nameInput.value.trim() || "Anonymous";
-});
+const refs = {
+    nameInput: document.querySelector("#name-input"),
+    nameOutput: document.querySelector("#name-output"),
+  };
+  
+  refs.nameInput.addEventListener("input", onInputChange);
+  refs.nameOutput.addEventListener("input", onInputChange);
+  
+  function onInputChange(event) {
+    refs.nameOutput.textContent = event.currentTarget.value
+      ? event.currentTarget.value
+      : "Anonymous";
+  }

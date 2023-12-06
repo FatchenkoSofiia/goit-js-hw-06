@@ -1,21 +1,21 @@
-const loginForm = document.querySelector('.login-form');
+const formEl = document.querySelector(".login-form");
 
-loginForm.addEventListener('submit', function() {
-    event.preventDefault();
+formEl.addEventListener("submit", submitHundler);
 
-    const emailInput = loginForm.elements.email;
-    const passwordInput = loginForm.elements.password;
+function submitHundler(event) {
+  event.preventDefault();
 
-    if (emailInput.value.trim() === '' || passwordInput.value.trim() === '') {
-        alert('All fields must be filled in')
-    } else {
-        const formData = {
-            email: emailInput.value,
-            password: passwordInput.value
-        };
+  const {
+    elements: { email, password },
+  } = event.currentTarget;
+  // console.log(email.value, password.value);
 
-        console.log(formData);
+  if (email.value === "" || password.value === "") {
+    return alert("Всі поля повинні бути заповнені!");
+  }
 
-        loginForm.reset();
-    }
-});
+  const userLoginDetails = { email: email.value, Password: password.value };
+
+  console.log(userLoginDetails);
+  event.currentTarget.reset();
+}

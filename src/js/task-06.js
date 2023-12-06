@@ -1,14 +1,13 @@
-const validationInput = document.getElementById("validation-input");
+const validInput = document.querySelector("#validation-input");
+const lengthNumber = Number(validInput.getAttribute("data-length"));
 
-validationInput.addEventListener("blur", function () {
-    const inputLength = validationInput.value.length;
-    const requiredLength = parseInt(validationInput.getAttribute("data-length"));
-    
-    if (inputLength === requiredLength) {
-        validationInput.classList.remove("invalid");
-        validationInput.classList.add("valid");
-    } else {
-        validationInput.classList.remove("valid");
-        validationInput.classList.add("invalid");
-    }
-});
+function checkLengthNumberFunction(event) {
+  if (event.currentTarget.value.length === lengthNumber) {
+    validInput.classList.remove("invalid");
+    validInput.classList.add("valid");
+  } else {
+    validInput.classList.remove("valid");
+    validInput.classList.add("invalid");
+  }
+}
+validInput.addEventListener("blur", checkLengthNumberFunction);
